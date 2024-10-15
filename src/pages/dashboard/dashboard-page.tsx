@@ -5,13 +5,16 @@ import {
   IoLockClosedOutline,
   IoPawOutline
 } from 'react-icons/io5'
+import { useBearStore } from '../../stores/bears'
 import { WhiteCard } from '../../components/shared/cards/white-card'
 
-export function Dashboard() {
+export function DashboardPage() {
+  const totalBears = useBearStore(state => state.computed.totalBears)
+
   return (
     <>
       <h1>Dashboard</h1>
-      <p>Información colectiva de varios stores de Zustand</p>
+      <p>Collective information from several Zustand stores</p>
 
       <hr />
 
@@ -19,36 +22,36 @@ export function Dashboard() {
         <WhiteCard centered>
           <IoPawOutline size={50} className='text-indigo-600' />
 
-          <h2>Osos</h2>
-          <p>Información</p>
+          <h2>Bears</h2>
+          <p>{totalBears}</p>
         </WhiteCard>
 
         <WhiteCard centered>
           <IoAccessibilityOutline size={50} className='text-indigo-600' />
 
-          <h2>Persona</h2>
-          <p>Información</p>
+          <h2>Persons</h2>
+          <p>Information</p>
         </WhiteCard>
 
         <WhiteCard centered>
           <IoListOutline size={50} className='text-indigo-600' />
 
-          <h2>Tareas</h2>
-          <p>Información</p>
+          <h2>Tasks</h2>
+          <p>Information</p>
         </WhiteCard>
 
         <WhiteCard centered>
           <IoHeartOutline size={50} className='text-indigo-600' />
 
-          <h2>Boda</h2>
-          <p>Información</p>
+          <h2>Wedding</h2>
+          <p>Information</p>
         </WhiteCard>
 
         <WhiteCard centered>
           <IoLockClosedOutline size={50} className='text-indigo-600' />
 
           <h2>Auth</h2>
-          <p>Información</p>
+          <p>Information</p>
         </WhiteCard>
       </div>
     </>

@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { Root } from '../root'
 import { AuthLayout } from '../layouts/auth-layout'
 import { DashboardLayout } from '../layouts/dashboard-layout'
-import { Dashboard } from '../pages/dashboard/dashboard-page'
+import { DashboardPage } from '../pages/dashboard/dashboard-page'
 import { BearPage } from '../pages/basic/bear-page'
 import { PersonPage } from '../pages/basic/person-page'
 import { JiraPage } from '../pages/objects/jira-page'
@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: <Dashboard />
+            element: <DashboardPage />
           },
           {
             path: 'bears',

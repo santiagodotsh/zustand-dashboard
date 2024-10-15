@@ -11,7 +11,7 @@ export function WhiteCard({ children, centered, className }: Props) {
     <div
       className={
         classNames(
-          'bg-white border rounded-[20px] p-10 shadow-3xl shadow-shadow-500 w-full',
+          'bg-white border space-y-5 rounded-[20px] p-10 shadow-3xl shadow-shadow-500 w-full',
           className,
           {
             'text-center': centered,
