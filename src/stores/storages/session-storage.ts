@@ -12,4 +12,4 @@ const storageApi: StateStorage = {
   }
 }
 
-export const customStorage = createJSONStorage(() => storageApi)
+export const customSessionStorage = createJSONStorage(() => storageApi)

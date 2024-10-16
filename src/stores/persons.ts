@@ -1,6 +1,6 @@
 import { create, type StateCreator } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { customStorage } from './customStorage'
+import { customSessionStorage } from './storages/session-storage'
 
 interface PersonState {
   firstName: string
@@ -23,7 +23,7 @@ export const usePersonStore = create<PersonState>()(
     storeApi,
     {
       name: 'person',
-      storage: customStorage
+      storage: customSessionStorage
     }
   )
 )
