@@ -6,7 +6,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard-page'
 import { BearPage } from '../pages/basic/bear-page'
 import { PersonPage } from '../pages/basic/person-page'
 import { JiraPage } from '../pages/objects/jira-page'
-import { WeddingInvitationPage } from '../pages/slices/wedding-invitation-page'
+import { WeddingPage } from '../pages/slices/wedding-page'
 import { LoginPage } from '../pages/auth/login-page'
 
 export const router = createBrowserRouter([
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
           },
           {
             path: 'wedding',
-            element: <WeddingInvitationPage />
+            element: <WeddingPage />
           }
         ]
       },

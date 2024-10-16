@@ -104,18 +104,20 @@ function BearsDisplay() {
     <WhiteCard>
       <h1>Bears</h1>
 
-      <button onClick={() => doNothing()}>
-        Do Nothing
-      </button>
+      <div className='flex flex-col space-y-5'>
+        <button onClick={() => doNothing()}>
+          Do Nothing
+        </button>
 
-      <button onClick={() => addBears()}>
-        Add Bears
-      </button>
+        <button onClick={() => addBears()}>
+          Add Bears
+        </button>
 
-      <button onClick={() => clearBears()}>
-        Clear Bears
-      </button>
-
+        <button onClick={() => clearBears()}>
+          Clear Bears
+        </button>
+      </div>
+      
       <pre>
         {JSON.stringify(bears, null, 2)}
       </pre>

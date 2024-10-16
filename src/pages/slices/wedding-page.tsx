@@ -1,6 +1,6 @@
 import { WhiteCard } from '../../components/shared/cards/white-card'
 
-export function WeddingInvitationPage() {
+export function WeddingPage() {
   return (
     <>
       <h1>Invitación de Boda</h1>
