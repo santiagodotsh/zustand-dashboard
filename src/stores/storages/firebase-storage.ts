@@ -1,14 +1,16 @@
 import { createJSONStorage, type StateStorage } from 'zustand/middleware'
 
+const firebaseUrl = 'https://zustand-storage-6b4fd-default-rtdb.firebaseio.com/zustand'
+
 const storageApi: StateStorage = {
-  getItem: function (name: string): string | null | Promise<string | null> {
-    return sessionStorage.getItem(name)
+  getItem: async function (name: string): Promise<string | null> {
+    return JSON.stringify(await fetch(`${firebaseUrl}/${name}.json`).then(res => res.json()))
   },
-  setItem: function (name: string, value: string): unknown | Promise<unknown> {
-    return sessionStorage.setItem(name, value)
+  setItem: async function (name: string, value: string): Promise<unknown> {
+    return await fetch(`${firebaseUrl}/${name}.json`, { method: 'PUT', body: value })
   },
-  removeItem: function (name: string): unknown | Promise<unknown> {
-    return sessionStorage.removeItem(name)
+  removeItem: function (): unknown | Promise<unknown> {
+    return
   }
 }
 
