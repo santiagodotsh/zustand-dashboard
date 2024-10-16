@@ -10,7 +10,7 @@ import { usePersonStore } from '../../stores/persons'
 import { WhiteCard } from '../../components/shared/cards/white-card'
 
 export function DashboardPage() {
-  const totalBears = useBearStore(state => state.computed.totalBears)
+  const totalBears = useBearStore(state => state.totalBears)
   const firstName = usePersonStore(state => state.firstName)
 
   return (
@@ -25,7 +25,7 @@ export function DashboardPage() {
           <IoPawOutline size={50} className='text-indigo-600' />
 
           <h2>Bears</h2>
-          <p>{totalBears}</p>
+          <p>{totalBears()}</p>
         </WhiteCard>
 
         <WhiteCard centered>
