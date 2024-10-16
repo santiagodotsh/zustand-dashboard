@@ -21,32 +21,32 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     title: 'Dashboard',
-    subTitle: 'Visualizar data',
+    subTitle: 'View data',
     href: '/dashboard',
     Icon: IoSpeedometerOutline
   },
   {
-    title: 'Osos',
-    subTitle: 'Manejador de osos',
+    title: 'Bears',
+    subTitle: 'Bear counter',
     href: '/dashboard/bears',
     Icon: IoPawOutline
   },
   {
-    title: 'Persona',
-    subTitle: 'Nombre y apellido',
-    href: '/dashboard/person',
+    title: 'Persons',
+    subTitle: 'First and last name',
+    href: '/dashboard/persons',
     Icon: IoAccessibilityOutline
   },
   {
-    title: 'Tareas',
-    subTitle: 'Listado de tareas',
+    title: 'Tasks',
+    subTitle: 'Task list',
     href: '/dashboard/tasks',
     Icon: IoListOutline
   },
   {
-    title: 'Boda',
-    subTitle: 'Invitados a la boda',
-    href: '/dashboard/wedding-invitation',
+    title: 'Wedding',
+    subTitle: 'Wedding guests',
+    href: '/dashboard/wedding',
     Icon: IoHeartOutline
   }
 ]
@@ -62,13 +62,13 @@ export function SideMenu() {
         </h1>
 
         <p className='text-slate-500 text-sm'>
-          Manejador de estados simple pero poderoso.
+          Simple but powerful state manager.
         </p>
       </div>
 
       <div id='profile' className='px-6 py-10'>
         <p className='text-slate-500'>
-          Bienvenido,
+          Welcome,
         </p>
 
         <a href='#' className='inline-flex space-x-2 items-center'>
@@ -96,15 +96,9 @@ export function SideMenu() {
             <IoLogOutOutline />
           </div>
 
-          <div className='flex flex-col'>
-            <span className='text-lg text-slate-300 font-bold leading-5'>
-              Logout
-            </span>
-
-            <span className='text-sm text-slate-500 hidden md:block'>
-              Cerrar sesión
-            </span>
-          </div>
+          <span className='text-lg text-slate-300 font-bold leading-5'>
+            Logout
+          </span>
         </NavLink>
       </nav>
     </div>

@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
             element: <BearPage />
           },
           {
-            path: 'person',
+            path: 'persons',
             element: <PersonPage />
           },
           {
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
             element: <JiraPage />
           },
           {
-            path: 'wedding-invitation',
+            path: 'wedding',
             element: <WeddingInvitationPage />
           }
         ]

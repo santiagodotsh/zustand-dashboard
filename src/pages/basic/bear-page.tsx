@@ -23,6 +23,7 @@ export function BearPage() {
 
 function BlackBears() {
   const blackBears = useBearStore(state => state.blackBears)
+  
   const increaseBlackBears = useBearStore(state => state.increaseBlackBears)
 
   return (
@@ -46,6 +47,7 @@ function BlackBears() {
 
 function PolarBears() {
   const polarBears = useBearStore(state => state.polarBears)
+  
   const increasePolarBears = useBearStore(state => state.increasePolarBears)
 
   return (
@@ -69,6 +71,7 @@ function PolarBears() {
 
 function PandaBears() {
   const pandaBears = useBearStore(state => state.pandaBears)
+  
   const increasePandaBears = useBearStore(state => state.increasePandaBears)
 
   return (
@@ -92,7 +95,7 @@ function PandaBears() {
 
 function BearsDisplay() {
   const bears = useBearStore(useShallow(state => state.bears))
-
+  
   const doNothing = useBearStore(state => state.doNothing)
   const addBears = useBearStore(state => state.addBears)
   const clearBears = useBearStore(state => state.clearBears)
