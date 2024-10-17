@@ -4,6 +4,13 @@
 $ npm install
 ```
 
+## Create .env file based on .env.example
+
+```bash
+# https://firebase.google.com/docs/database
+VITE_FIREBASE_URL=
+```
+
 ## Compile and run the project
 
 ```bash

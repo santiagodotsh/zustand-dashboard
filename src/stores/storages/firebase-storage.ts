@@ -1,6 +1,6 @@
 import { createJSONStorage, type StateStorage } from 'zustand/middleware'
 
-const firebaseUrl = 'https://zustand-storage-6b4fd-default-rtdb.firebaseio.com/zustand'
+const firebaseUrl: string = import.meta.env.VITE_FIREBASE_URL
 
 const storageApi: StateStorage = {
   getItem: async function (name: string): Promise<string | null> {
