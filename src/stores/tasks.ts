@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
+import { v4 as uuid } from 'uuid'
 import { type Task, TaskStatus } from '../interfaces/task'
 
 interface TaskState {
@@ -7,9 +8,13 @@ interface TaskState {
   tasks: Record<string, Task>
 
   getTaskByStatus: (status: TaskStatus) => Task[]
+  addTask: (title: string, status: TaskStatus) => void
+
   setDraggingTaskId: (taskId: string) => void
   removeDraggingTaskId: () => void
+
   changeStatus: (taskId: string, status:TaskStatus) => void
+
   onTaskDrop: (status: TaskStatus) => void
 }
 
@@ -26,8 +31,24 @@ export const useTaskStore = create<TaskState>()(
       },
 
       getTaskByStatus: (status) => Object.values(get().tasks).filter(task => task.status === status),
+      addTask: (title, status) => {
+        const newTask = {
+          id: uuid(),
+          title,
+          status
+        }
+
+        set(state => ({
+          tasks: {
+            ...state.tasks,
+            [newTask.id]: newTask
+          }
+        }))
+      },
+
       setDraggingTaskId: (taskId) => set({ draggingTaskId: taskId }),
       removeDraggingTaskId: () => set({ draggingTaskId: undefined }),
+     
       changeStatus: (taskId, status) => {
         const task = get().tasks[taskId]
         task.status = status
@@ -39,6 +60,7 @@ export const useTaskStore = create<TaskState>()(
           }
         }))
       },
+      
       onTaskDrop: (status) => {
         const taskId = get().draggingTaskId
 

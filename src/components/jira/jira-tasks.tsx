@@ -1,6 +1,7 @@
 import { useState, type DragEvent } from 'react'
 import classNames from 'classnames'
-import { IoCheckmarkCircleOutline, IoEllipsisHorizontalOutline } from 'react-icons/io5'
+import Swal from 'sweetalert2'
+import { IoAddOutline, IoCheckmarkCircleOutline } from 'react-icons/io5'
 import { useTaskStore } from '../../stores/tasks'
 import { SingleTask } from './single-task'
 import type { Task, TaskStatus } from '../../interfaces/task'
@@ -15,8 +16,28 @@ export function JiraTasks({ title, status, tasks }: Props) {
   const isDragging = useTaskStore(state => !!state.draggingTaskId)
 
   const onTaskDrop = useTaskStore(state => state.onTaskDrop)
+  const addTask = useTaskStore(state => state.addTask)
 
   const [onDragOver, setOnDragOver] = useState(false)
+
+  const handleAddTask = async () => {
+    const { isConfirmed, value } = await Swal.fire({
+      title: 'New task',
+      input: 'text',
+      inputLabel: 'Task name',
+      inputPlaceholder: 'Enter the task name',
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return 'You must enter a name for the task'
+        }
+      }
+    })
+
+    if (!isConfirmed) return
+
+    addTask(value, status)
+  }
 
   const handleOnDragOver = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault()
@@ -66,8 +87,8 @@ export function JiraTasks({ title, status, tasks }: Props) {
           </h4>
         </div>
 
-        <button>
-          <IoEllipsisHorizontalOutline />
+        <button onClick={handleAddTask}>
+          <IoAddOutline />
         </button>
       </div>
 
