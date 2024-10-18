@@ -43,11 +43,11 @@ export const useTaskStore = create<TaskState>()(
 
             set(state => {
               state.tasks[newTask.id] = newTask
-            })
+            }, false, 'addTask')
           },
 
-          setDraggingTaskId: (taskId) => set({ draggingTaskId: taskId }),
-          removeDraggingTaskId: () => set({ draggingTaskId: undefined }),
+          setDraggingTaskId: (taskId) => set({ draggingTaskId: taskId }, false, 'setDraggingTaskId'),
+          removeDraggingTaskId: () => set({ draggingTaskId: undefined }, false, 'removeDraggingTaskId'),
         
           changeStatus: (taskId, status) => {
             const task = { ...get().tasks[taskId] }
@@ -55,7 +55,7 @@ export const useTaskStore = create<TaskState>()(
 
             set(state => {
               state.tasks[taskId] = task
-            })
+            }, false, 'changeStatus')
           },
           
           onTaskDrop: (status) => {
