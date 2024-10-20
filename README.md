@@ -26,6 +26,4 @@ $ npm run preview
 
 ## Authentication method
 
-To get the JWT you have to run the server:
-
-**[nest-teslo-shop](https://github.com/santiagodotsh/nest-teslo-shop)**
+It is required to start **[nest-teslo-shop](https://github.com/santiagodotsh/nest-teslo-shop)** for authentication to work.
