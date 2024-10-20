@@ -63,7 +63,7 @@ export function DashboardPage() {
           <p>{user?.email}</p>
         </WhiteCard>
 
-        <WhiteCard className='col-span-3' centered>
+        <WhiteCard className='col-span-3'>
           <IoInformationOutline size={50} className='text-indigo-600' />
 
           <RequestInfo />
