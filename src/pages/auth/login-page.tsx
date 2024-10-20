@@ -1,22 +1,28 @@
+import { useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../../stores/auth'
 import type { FormEvent } from 'react'
 
 export function LoginPage() {
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate()
+
+  const loginUser = useAuthStore(state => state.loginUser)
+
+  const handleOnSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    // const { username, password, remember } = event.target as HTMLFormElement
-
-    const { username, password,remember } = event.target as typeof event.target & {
-      username: { value: string }
+    const { email, password, remember } = event.target as typeof event.target & {
+      email: { value: string }
       password: { value: string }
       remember: { checked: boolean }
     }
 
-    console.log(username.value, password.value, remember.checked)
-
-    username.value = ''
-    password.value = ''
-    remember.checked = false
+    try {
+      await loginUser(email.value, password.value)
+      
+      navigate('/dashboard')
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -25,15 +31,15 @@ export function LoginPage() {
         Login
       </h1>
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleOnSubmit}>
         <div className='mb-4'>
           <label className='block text-gray-600'>
-            Username
+            Email
           </label>
 
           <input
-            type='text'
-            name='username'
+            type='email'
+            name='email'
             autoComplete='off'
           />
         </div>
@@ -51,15 +57,15 @@ export function LoginPage() {
         </div>
 
         <div className='mb-4 flex items-center'>
-          <label className='text-gray-600 ml-2'>
-            Remember Me
-          </label>
-
           <input
             type='checkbox'
             name='remember'
             className='text-blue-500'
           />
+
+          <label className='text-gray-600 ml-2'>
+            Remember Me
+          </label>
         </div>
         
         <div className='mb-6 text-blue-500'>

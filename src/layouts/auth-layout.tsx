@@ -1,6 +1,21 @@
-import { Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
+import { useAuthStore } from '../stores/auth'
+import { AuthStatus } from '../interfaces/auth'
 
 export function AuthLayout() {
+  const status = useAuthStore(state => state.status)
+  const checkAuthStatus = useAuthStore(state => state.checkAuthStatus)
+
+  if (status === AuthStatus.Pending) {
+    checkAuthStatus()
+
+    return <>Loading...</>
+  }
+
+  if (status === AuthStatus.Authorized) {
+    return <Navigate to='/dashboard' />
+  }
+
   return (
     <div className='bg-gray-100 flex justify-center items-center h-screen'>
       <div className='w-1/2 h-screen hidden lg:flex lg:flex-col items-center justify-center bg-indigo-700'>
